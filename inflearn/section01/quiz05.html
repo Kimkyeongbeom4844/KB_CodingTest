@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (x) => {
+        return Math.min(...x)
+    }
+    //입력예제는 12 77 38 41 53 92 85 인데
+    //let fs = require('fs');
+    //let input = fs.readfileSync('./dev/stdin').toString().trim().split(" ");을 하면 되니까
+    //그냥 아래처럼 input 배열을 선언해서 만들자
+    let input = [5,3,7,11,2,15,17];
+    console.log(solution(input));
+</script>
+</body>
+</html>

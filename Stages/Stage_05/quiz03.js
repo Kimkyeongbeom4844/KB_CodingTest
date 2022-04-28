@@ -2,29 +2,19 @@ let fs = require('fs');
 let input = fs.readFileSync('../sample.txt').toString().trim();
 let max = Number(input);
 let arr = [];
-for (let i=1; i<=max; i++){
-    arr.push(i);
-    let $i = String(i).split('')
-    let cha = ``;
-//     for(let j=0; j<$i.length; j++){
-//         cha += `${Number($i[j])}
-// `
-//     }
-    $i.forEach((x)=>{
-        if()
-    })
-    console.log(cha)
+let count = 0;
+for(let i=1; i<=max; i++){
+    arr.push(String(i))
+    if(Number(arr[i-1])<100){
+        count++
+    }
+    else if(Number(arr[i-1])<1000){
+        let max = arr[i-1].length;
+        for(let j=0; j<=max-1; j++){
+            if(arr[i-1][j] - arr[i-1][j+1] == arr[i-1][j+1] - arr[i-1][j+2]){
+                count++;
+            }
+        }
+    }
 }
-
-
-// let arr = [5,6,7,8,9];
-// let arr2 = arr.map((x)=>{
-//     return x+1;
-// })
-// console.log(arr2)
-
-// let arr = [5,6,7,8,9];
-// arr.forEach((x)=>{
-//     return x+1;
-// })
-// console.log(arr);
+console.log(count)

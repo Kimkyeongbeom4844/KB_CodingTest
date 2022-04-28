@@ -16,4 +16,4 @@ for(let i=1; i<=count; i++){
     output += `${sum}
 `
 }
-console.log(output)
+console.log(output);

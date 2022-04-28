@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (a) => {
+        let sum = 0;
+        let hols = a.filter(x=>x%2 != 0);
+        for(let i=0; i<hols.length; i++){
+            sum += hols[i];
+        }
+//         return `${sum}
+// ${Math.min(...hols)}`
+        return sum +'\n'+Math.min(...hols);
+    }
+
+    let input = [12,77,38,41,53,92,85]
+    console.log(solution(input));
+</script>
+</body>
+</html>
