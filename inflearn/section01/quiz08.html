@@ -8,7 +8,35 @@
 </head>
 <body>
 <script>
-    
+    let solution = (a) => {
+        // let sum = 0;
+        // let arr = [];
+        // for(let i=0; i<a.length; i++){
+        //     sum += a[i];
+        // }
+        // let gap = sum - 100;
+        // a.forEach(x=>gap-x != x &&a.includes(gap-x)? arr.push(x):x);
+
+        // return a.filter(x=> !arr.includes(x));
+        // let sum = 0;
+        // for(let i=0; i<a.length; i++){
+        //     sum += a[i];
+        // }
+        let sum = a.reduce((a,b)=>a+b,0)
+        let gap = sum - 100;
+        for(let i=0; i<a.length-1; i++){
+            for(let j=i+1; j<a.length; j++){
+                if(a[i]+a[j] == gap){
+                    a.splice(j,1);
+                    a.splice(i,1);
+                    return a;
+                }
+            }
+        }
+    }
+
+    let input = [20, 7, 23, 19, 10, 15, 25, 8, 13]
+    console.log(solution(input))
 </script>
 </body>
 </html>
