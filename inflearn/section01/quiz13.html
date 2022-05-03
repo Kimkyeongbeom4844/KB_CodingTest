@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (s) => {
+        let arr = s.trim().split('');
+        let result = arr.map(element => {
+            if(65<=element.charCodeAt()&&element.charCodeAt()<=90){
+                return element.toLowerCase();
+            }
+            else if (97<=element.charCodeAt()&&element.charCodeAt()<=122){
+                return element.toUpperCase();
+            }
+            else return element;
+        });
+        return result.join('');
+    }
+    let input = `StuDY`;
+    console.log(solution(input));
+</script>
+</body>
+</html>

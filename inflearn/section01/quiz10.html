@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (a,b) => {
+        let count = 0;
+        let arr = a.trim().split('');
+        arr.forEach(element => {
+            if(element == b){
+                count++;
+            }
+        });
+        return count;
+    };
+    let input = `COMPUTERPROGRAMMING
+R`;
+    let input1 = input.trim().split('\n')[0];
+    let input2 = input.trim().split('\n')[1];
+    console.log(solution(input1,input2));
+</script>
+</body>
+</html>
