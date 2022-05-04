@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (s) => {
+        let $A = s.trim().split('\n')[0].split(' ');
+        let $B = s.trim().split('\n')[1].split(' ');
+        let result = '';
+        for(let i=0; i<5; i++){
+            if(Number($A[i])-Number($B[i])==1 || Number($A[i])-Number($B[i])== -2){
+                result += 'A\n'
+            }
+            else if(Number($A[i])-Number($B[i])==0){
+                result += 'D\n'
+            }
+            else {
+                result += 'B\nf'
+            }
+        }
+        return result.trim();
+    }
+    let input = `2 3 3 1 3
+1 1 2 2 3`;
+    console.log(solution(input));
+</script>
+</body>
+</html>

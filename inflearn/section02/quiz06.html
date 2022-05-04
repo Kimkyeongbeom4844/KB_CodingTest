@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (s) => {
+        // let arr = s.trim().split('\n');
+        // let result = [];
+        // let dia = 0;
+        // let unDia = 0;
+        // for(let i=0; i<arr.length; i++){
+        //     let row = arr[i].split(' ');
+        //     let sum = 0;
+        //     for(let j=0; j<row.length; j++){
+        //         sum += Number(row[j]);
+        //     }
+        //     result.push(sum);
+        // }
+        // for(let i=0; i<arr.length; i++){
+        //     let sum = 0;
+        //     for(let j=0; j<arr.length; j++){
+        //         sum += Number(arr[j].split(' ')[i]);
+        //     }
+        //     result.push(sum);
+        // }
+
+        // for(let i=0; i<arr.length; i++){
+        //     dia += Number(arr[i].split(' ')[i]);
+        // }
+        // for(let i=0; i<arr.length; i++){
+        //     unDia += Number(arr[i].split(' ')[(arr.length-1)-i])
+        // }
+        // result.push(dia);
+        // result.push(unDia);
+        // return Math.max(...result);
+        
+        // let arr = Array.from(Array(5),()=>Array(5).fill(null));
+        // for(let i=0; i<5; i++){
+        //     for(let j=0; j<5; j++){
+        //         arr[i][j] = ;
+        //     }
+        // }
+        let result = [];
+        let input= Array.from(Array(5),()=>Array(5));
+        let arr = s.replace(/\n/gi," ").split(" ");
+        let count = 0;
+        for(let i=0; i<5; i++){
+            for(let j=0; j<5; j++){
+                input[i][j] = arr[count];
+                count++;
+            }
+        }
+
+        let dia = 0;
+        let unDia = 0;
+        for(let i=0; i<5; i++){
+            let rowSum = 0;
+            let colSum = 0;
+            for(let j=0; j<5; j++){
+                rowSum += Number(input[i][j]);
+                colSum += Number(input[j][i]);
+            }
+            dia += Number(input[i][i]);
+            unDia += Number(input[4-i][i]);
+            result.push(rowSum, colSum);
+        }
+        result.push(dia, unDia);
+        return Math.max(...result);
+    }
+    let input = `10 13 10 12 15
+12 39 30 23 11
+11 25 50 53 15
+19 27 29 37 27
+19 13 30 13 19`;
+console.log(solution(input));
+</script>
+</body>
+</html>     
