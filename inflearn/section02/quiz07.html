@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <script>
+    let solution = (s) => {
+        let input = s.replace(/\n/g," ").split(" ");
+        let max = Number(input[0]);
+        let arr = Array.from(Array(max+2),()=>Array(max+2).fill(0));
+        let num = 1;
+        let count = 0;
+        for(let i=1; i<=max; i++){
+            for(let j=1; j<=max; j++){
+                arr[i][j] = Number(input[num]);
+                num++;
+            }
+        }
+        for(let i=1; i<=max; i++){
+            for(let j=1; j<=max; j++){
+                if(arr[i][j]>arr[i][j-1]&&arr[i][j]>arr[i][j+1]&&arr[i][j]>arr[i-1][j]&&arr[i][j]>arr[i+1][j]){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    let input = `5
+5 3 7 2 3
+3 7 1 6 1
+7 2 5 3 4
+4 3 6 4 1
+8 7 3 5 2`;
+    console.log(solution(input));
+ </script>   
+</body>
+</html>
