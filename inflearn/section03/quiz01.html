@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (s) => {
+        // let compare1 = ``;
+        // let compare2 = ``;
+        // for(let i=0; i<s.length; i++){
+        //     compare1 += `${s[i].toUpperCase()}`
+        // }
+        // for(let i=s.length-1; i>=0; i--){
+        //     compare2 += `${s[i].toUpperCase()}`
+        // }
+        // if(compare1 == compare2){
+        //     return `YES`;
+        // }
+        // else return `NO`;
+        s = s.toUpperCase();
+        let result = 'yes';
+        let len = s.length;
+        for(let i=0; i<parseInt(len/2); i++){
+            if(s[i] !== s[len-i-1]) return 'no';
+        }
+        return result;
+    }
+    let input = `gooG`;
+    console.log(solution(input));
+</script>
+</body>
+</html>

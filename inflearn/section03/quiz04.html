@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (s) => {
+        let input = s.trim().split(" ")[0];
+        let reverseInput = input.split("").reverse().join("");
+        let search = s.trim().split(" ")[1];
+        let result = [];
+        let reverseResult = [];
+        let count = 0;
+        for(let i=0; i<input.length; i++){
+            if(input[i] !== search){
+                count++
+                result.push(count);
+            }
+            else{
+                count = 0;
+                result.push(count);
+            }
+        }
+        count = 0;
+        for(let i=0; i<reverseInput.length; i++){
+            if(reverseInput[i] !== search){
+                count++
+                reverseResult.push(count);
+            }
+            else {
+                count = 0;
+                reverseResult.push(count);
+            }
+        }
+        reverseResult = reverseResult.reverse()
+        for(let i=0; i<input.length; i++){
+            if(Number(result[i])>Number(reverseResult[i])){
+                result.splice(i,1,reverseResult[i])
+                // result[i] = reverseResult[i];
+            }
+        }
+        return result.join(" ");
+    }
+    let input = `teachermode e`;
+    let start = new Date();
+    console.log(solution(input));
+    let end = new Date();
+    console.log(`${end-start}`);
+</script>
+</body>
+</html>
