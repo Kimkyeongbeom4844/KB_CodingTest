@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (s) => {
+        let count = Number(s.trim().split('\n')[0]);
+        let result = Array.from(Array(count),()=>Array(2).fill(null));
+        let input = s.trim().split('\n')[1].split(" ");
+        for(let i=0; i<count; i++){
+            let sum = 0;
+            for(let j=0; j<input[i].length; j++){
+                sum += Number(input[i].split('')[j]);
+            }
+            result[i][0] = input[i];
+            result[i][1] = sum;
+        }
+        console.log(result);
+        return result.sort((a,b)=>b[0]-a[0]).sort((a,b)=>b[1]-a[1])[0][0];
+    }
+    let input = `7
+128 460 603 40 521 137 123`;
+    let start = new Date();
+    console.log(solution(input));
+    let end = new Date();
+    console.log(end-start);
+</script>
+</body>
+</html>
