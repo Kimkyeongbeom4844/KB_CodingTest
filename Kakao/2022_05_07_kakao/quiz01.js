@@ -1,6 +1,5 @@
 function solution(survey, choices) {
     var answer = '';
-    let len = survey.length;
     let arr = [['R',0,'T',0],['C',0,'F',0],['J',0,'M',0],['A',0,'N',0]];
     for(let i=0; i<choices.length; i++){
         switch(choices[i]){
