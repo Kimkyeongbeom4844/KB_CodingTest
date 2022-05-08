@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (s) => {
+        let input = s.trim().split('\n');
+        let people = Number(input[0].split(' ')[0]);
+        let tests = Number(input[0].split(' ')[1]);
+        let arr = Array.from(Array(tests),()=>Array(people).fill(null));
+        for(let i=1; i<=tests; i++){
+            for(let j=0; j<people; j++){
+                arr[i-1][j] = Number(input[i].split(' ')[j]);
+            }
+        }
+        console.log(arr);
+
+        //4중for문   *** !!중요!! ***
+        let answer = 0;
+        for(let i=1; i<=people; i++){
+            for(let j=1; j<=people; j++){
+                let count = 0;
+                console.log(i, j); //i와 j로 (멘토,멘티)(i,j)의 경우의 수를 다 구함
+                for(let k=0; k<tests; k++){
+                    let mento=0;
+                    let menti=0;
+                    for(let m=0; m<people; m++){
+                        if(arr[k][m] === i) mento = m;
+                        if(arr[k][m] === j) menti = m;
+                    }
+                    if(mento<menti) count ++; //멘티의 등수가 멘토보다 뒤에 있으면 카운트 증가
+                    if(count === tests) answer++;//카운트가 테스트개수만큼 똑같으면 정답 ++
+                }
+            }
+        }
+        return answer;
+    }
+    let input = `4 3
+3 4 1 2
+4 3 2 1
+3 1 4 2`;
+    console.log(solution(input));
+</script>
+</body>
+</html>
