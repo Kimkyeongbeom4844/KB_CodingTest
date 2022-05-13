@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (s) => {
+        let max = Number(s.trim().split('\n')[0].split(` `)[1]);
+        let students = Number(s.trim().split('\n')[0].split(` `)[0]);
+        let arr = Array.from(Array(students),()=>Array(2).fill(null));
+        for(let i=0; i<students; i++){
+            arr[i][0] = Number(s.trim().split('\n')[i+1].split(` `)[0])+Number(s.trim().split('\n')[i+1].split(` `)[1]);
+            arr[i][1] = parseInt(Number(s.trim().split('\n')[i+1].split(` `)[0])/2)+Number(s.trim().split('\n')[i+1].split(` `)[1]);
+        }
+        console.log(arr); //input을 2차원배열에 삽입
+        let arr2 = arr.map((x)=>x[0]);
+        console.log(arr2); //가격 + 배송비
+        let arr3 = arr.map((x)=>x[1]);
+        console.log(arr3); //가격/2 + 배송비
+
+        let count = 0;
+        let sum = 0;
+        while(sum < max){
+            sum += Math.min(...arr2);
+            if(sum>max){
+                sum -= Math.min(...arr2);
+                break;
+            }
+            console.log(sum, max);
+            let where = arr2.indexOf(Math.min(...arr2));
+            arr2.splice(where,1);
+            arr3.splice(where,1);
+            count++;
+        }
+        if(sum+Math.min(...arr3) <= max) count++;
+        return count;
+    }
+    let input = `5 28
+6 6
+2 2
+4 3
+4 5
+10 3`;
+//12(9) 4(3) 7(5) 9(7) 13(8)
+//14(10) 4(3) 7(5) 9(7) 13(8)
+    console.log(solution(input));
+</script>
+</body>
+</html>
