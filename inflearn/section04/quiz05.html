@@ -9,9 +9,27 @@
 <body>
 <script>
     let solution = (s) => {
-        
+        let max = Number(s.trim().split('\n')[0].split(' ')[0]);
+        let where = Number(s.trim().split('\n')[0].split(' ')[1]);
+        let input = s.trim().split('\n')[1].split(' ');
+        let arr = [];
+        for(let i=0; i<max; i++){
+            for(let j=0; j<max; j++){
+                if(i !== j){
+                    for(let k=0; k<max; k++){
+                        if(k !== i && k !== j){
+                            if(!arr.includes((Number(input[i])+Number(input[j])+Number(input[k])))){
+                                arr.push(Number(input[i])+Number(input[j])+Number(input[k]));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return arr.sort((a,b)=>b-a)[where-1];
     }
-    let input = ``;
+    let input = `10 3
+13 15 34 23 45 65 33 11 26 42`;
     console.log(solution(input));
 </script>
 </body>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (s) => {
+        let max1 = Number(s.trim().split('\n')[0]);
+        let input1 = s.trim().split('\n')[1].split(' ');
+        let max2 = Number(s.trim().split('\n')[2]);
+        let input2 = s.trim().split('\n')[3].split(' ');
+        let arr = [];
+        for(let i=0; i<max1; i++){
+            arr.push(Number(input1[i]));
+        }
+        for(let i=0; i<max2; i++){
+            arr.push(Number(input2[i]));
+        }
+        return arr.sort((a,b)=>a-b).join(' ');
+    }
+    let input = `3
+1 3 5
+5
+2 3 6 7 9`;
+    console.log(solution(input));
+</script>
+</body>
+</html>
