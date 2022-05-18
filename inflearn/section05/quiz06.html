@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (s) => {
+        let length = Number(s.trim().split('\n')[0]);
+        let input = s.trim().split('\n')[1].split('');
+        let result = {};
+        for(let i=0; i<length; i++){
+            if(result[input[i]]){
+                result[input[i]]++;
+            }
+            else{
+                result[input[i]] = 1;
+            }
+        }
+        console.log(result);
+        let where = Object.values(result).indexOf(Math.max(...Object.values(result)));
+        return Object.keys(result)[where];
+    }
+    let input = `15
+DEDEBACBACCACCB`;
+    console.log(solution(input))
+</script>
+</body>
+</html>
