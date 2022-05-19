@@ -8,25 +8,49 @@
 </head>
 <body>
 <script>
+//     let solution = (s) => {
+//         let length = Number(s.trim().split('\n')[0]);
+//         let input = s.trim().split('\n')[1].split('');
+//         let result = {};
+//         for(let i=0; i<length; i++){
+//             if(result[input[i]]){
+//                 result[input[i]]++;
+//             }
+//             else{
+//                 result[input[i]] = 1;
+//             }
+//         }
+//         console.log(result);
+//         let where = Object.values(result).indexOf(Math.max(...Object.values(result)));
+//         return Object.keys(result)[where];
+//     }
+//     let input = `15
+// DEDEBACBACCACCB`;
+//     console.log(solution(input))
     let solution = (s) => {
         let length = Number(s.trim().split('\n')[0]);
         let input = s.trim().split('\n')[1].split('');
-        let result = {};
+        let obj = new Map();
         for(let i=0; i<length; i++){
-            if(result[input[i]]){
-                result[input[i]]++;
+            if(obj.has(input[i])){
+                let count = obj.get(input[i])+1;
+                obj.set(input[i],count);
             }
             else{
-                result[input[i]] = 1;
+                obj.set(input[i],1);
             }
         }
-        console.log(result);
-        let where = Object.values(result).indexOf(Math.max(...Object.values(result)));
-        return Object.keys(result)[where];
+        console.log(obj);
+        let arr = [];
+        for(let [key,value] of obj){
+            arr.push([key,value]);
+        }
+        console.log(arr.sort((a,b)=>b[1]-a[1]));
+        return arr[0][0]
     }
     let input = `15
-DEDEBACBACCACCB`;
-    console.log(solution(input))
+BACBACCACCBDEDE`;
+    console.log(solution(input));
 </script>
 </body>
 </html>

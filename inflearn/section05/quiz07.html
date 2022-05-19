@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let solution = (s) => {
+        let str1 = s.trim().split('\n')[0];
+        let str2 = s.trim().split('\n')[1];
+        let obj1 = new Map();
+        let obj2 = new Map();
+        for(let i=0; i<str1.length; i++){
+            if(obj1.has(str1[i])){
+                let count = obj1.get(str1[i])+1;
+                obj1.set(str1[i],count);
+            }
+            else{
+                obj1.set(str1[i],1)
+            }
+        }
+        for(let i=0; i<str2.length; i++){
+            if(obj2.has(str2[i])){
+                let count = obj2.get(str2[i])+1;
+                obj2.set(str2[i],count);
+            }
+            else{
+                obj2.set(str2[i],1)
+            }
+        }
+        console.log(obj1, obj2)
+        if(obj1.size != obj2.size){
+            return `NO`;
+        }
+        else{
+            for(let [key,value] of obj1){
+                if(obj2.get(key) !== value){
+                    return `NO`
+                }
+            }
+            return `YES`;
+        }
+        console.log(obj1, obj2);
+    }
+    let input = `abaCC
+Caaab`;
+    console.log(solution(input));
+</script>
+</body>
+</html>
